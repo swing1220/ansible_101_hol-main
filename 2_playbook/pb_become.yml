@@ -1,0 +1,27 @@
+- name: example - become
+  hosts: web
+
+  tasks:
+  - name: Install web server
+    apt: 
+      name: nginx
+      state: present
+    become: true
+    become_user: root
+
+  - name: Run web server
+    service: 
+      name: nginx
+      state: started
+    become: true
+    become_user: root
+
+  - name: Access web server
+    uri:
+      url: http://{{ hostvars[inventory_hostname].ansible_host }}/
+    register: reg
+    delegate_to: localhost
+  
+  - name: print results of previous task
+    debug:
+      msg: "HTTP Response from {{ reg.url }} is {{ reg.status }}"    

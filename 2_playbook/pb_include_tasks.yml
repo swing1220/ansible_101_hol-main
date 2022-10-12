@@ -1,0 +1,13 @@
+- name: play1
+  hosts: localhost
+
+  tasks:
+  - name: Include task.yml
+    include_tasks: task.yml
+
+- name: play2
+  hosts: all
+
+  tasks:
+  - name: Include task.yml
+    include_tasks: task.yml

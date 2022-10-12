@@ -1,0 +1,10 @@
+- name: example - extra_vars
+  hosts: "{{ host }}"
+
+  tasks:
+    - name: check hostname
+      command: hostname
+      register: res
+
+    - name: print previous result
+      debug: msg={{ res.stdout }}

@@ -1,0 +1,8 @@
+---
+- name: task2.yml - foo
+  debug: 
+  tags: foo
+
+- name: task2.yml - bar
+  debug:
+  tags: bar

@@ -1,0 +1,13 @@
+- name: play1
+  hosts: localhost
+  tasks:
+  - name: print host
+    debug: 
+      msg: "this is {{ inventory_hostname }}"
+
+- name: play2
+  hosts: all
+  tasks:
+  - name: print host
+    debug: 
+      msg: "this is {{ inventory_hostname }}"

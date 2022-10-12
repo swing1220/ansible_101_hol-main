@@ -1,0 +1,30 @@
+- name: example - tags
+  hosts: localhost
+
+  tasks:
+  - name: foo
+    debug:
+    tags: 
+      - foo
+
+  - name: bar
+    debug:
+    tags:
+      - bar
+
+  - name: foo,bar
+    debug:
+    tags:
+      - foo
+      - bar
+
+  - name: always
+    debug:
+    tags:
+      - always
+
+  - name: never
+    debug:
+    tags:
+      - never
+      - foo

@@ -1,0 +1,26 @@
+- hosts: nxos
+  connection: ansible.netcommon.network_cli
+
+  tasks:
+  - name: get version info
+    cisco.nxos.nxos_command:
+      commands: show version
+    register: res
+
+  - debug:
+      var: res.stdout
+
+  # Regular expression ==> 'BIOS: version '
+  - set_fact:
+      chk_regex: "{{ res.stdout | regex_search('BIOS[:]\\sversion\\s([0-9]+)[.]([0-9]+)') }}"
+      chk_exist: "{{ res.stdout is search('BIOS: version') != -1 }}"
+      extract_value: "{{ res.stdout | regex_search('BIOS[:]\\sversion\\s([0-9]+)[.]([0-9]+)') | regex_replace('BIOS: version ') }}"
+  
+  - debug:
+      msg: "{{ chk_regex }}"
+
+  - debug:
+      msg: "{{ chk_exist }}"
+
+  - debug:
+      msg: "{{ extract_value }}"

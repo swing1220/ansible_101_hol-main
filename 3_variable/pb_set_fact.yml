@@ -1,0 +1,13 @@
+- name: example - set_fact
+  hosts: web
+  gather_facts: yes
+  
+  tasks:
+    - name: use set_fact
+      set_fact:
+        myvar: hello!
+        target_name: "{{ inventory_hostname }}"
+
+    - name: print variable by set_fact
+      debug: 
+        msg: "{{ myvar }} {{ target_name }}"

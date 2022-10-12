@@ -1,0 +1,23 @@
+- hosts: localhost
+
+  vars:
+    cars:
+      - Color: Blue
+        Model:
+          Name: Sonata
+          Year: 2021
+        Transition: Manual
+        Price: 40,000,000
+      - Color: Red
+        Model:
+          Name: Sonata
+          Year: 2021
+        Transition: Automatic
+        Price: 40,000,000
+  
+  tasks:
+    - debug:
+        msg: "{{ cars.0.Price }}"
+
+    - debug:
+        msg: "{{ cars.1.Model.Year }}"

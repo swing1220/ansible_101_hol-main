@@ -1,0 +1,8 @@
+- name: example - tags
+  hosts: localhost
+
+  tasks:
+  - name: include_tasks
+    include_tasks: task2.yml
+    tags:
+      - foo

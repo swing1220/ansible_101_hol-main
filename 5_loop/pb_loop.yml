@@ -1,0 +1,21 @@
+- name: example - loop
+  hosts: web
+  become: yes
+  become_user: root
+
+  vars:
+    packages:
+      - name: nginx
+        state: started
+      - name: mysql-server
+        state: stopped
+      - name: weblogic
+        state: stopped
+  
+  tasks:
+    - name: Install/remove software
+      service:
+        name: "{{ item.name }}"
+        state: "{{ item.state }}"
+      loop: "{{ packages }}"
+      when: item.name == "nginx"

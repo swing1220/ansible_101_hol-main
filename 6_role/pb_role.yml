@@ -1,0 +1,10 @@
+- name: example - role
+  hosts: localhost
+   
+  roles:
+    - myrole1
+    - myrole2
+    - { role: myrole1, msg: hello }
+    - { role: myrole2, msg: world! }
+    - myrole1
+    - myrole2

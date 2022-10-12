@@ -1,0 +1,8 @@
+- hosts: localhost
+
+  tasks:
+  - name: read hosts file
+    set_fact:
+      file_content: "{{ lookup('file', '/etc/hosts') }}"
+  
+  - debug: var=file_content

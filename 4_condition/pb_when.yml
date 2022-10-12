@@ -1,0 +1,24 @@
+- name: example - when
+  hosts: localhost
+  gather_facts: yes
+  
+  vars:
+    test1: yes
+    test2: no
+  
+  tasks:
+    - name: task1
+      debug:
+      when: test1
+    
+    - name: task2
+      debug:
+      when: test2
+
+    - name: task3
+      debug: 
+      when: ansible_facts['os_family'] == 'Debian'
+
+    - name: task4
+      debug: 
+      when: ansible_facts['os_family'] != 'Debian'

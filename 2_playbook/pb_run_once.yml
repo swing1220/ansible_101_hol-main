@@ -1,0 +1,12 @@
+- name: example - run_once
+  hosts: all
+
+  tasks:
+  - name: Executed at all hosts
+    debug: 
+      msg: hello world!
+  
+  - name: Executed only one host
+    debug:
+      msg: hello world!
+    run_once: yes

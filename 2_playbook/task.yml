@@ -1,0 +1,8 @@
+---
+- name: check hostname
+  command: hostname
+  register: result
+
+- name: print hostname
+  debug:
+    var: result.stdout
